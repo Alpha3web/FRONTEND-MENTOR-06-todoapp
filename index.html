@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Todo app</title>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+
+<body>
+
+  <header>
+    <h1>TODO</h1>
+    <img src="./images/icon-moon.svg" alt="dark mode" class="dark-mode">
+    <img src="./images/icon-sun.svg"  alt="light mode" class="light-mode">
+  </header>
+
+  <main>
+    <!-- create a todo form field -->
+
+      <form action="">
+        <div class="div"><img src="./images/icon-check.svg" alt="icon-check"></div>
+        <input type="text" name="createTodo" id="" placeholder="Create a todo">
+
+      </form>
+
+    <!-- Todos -->
+
+    <div class="wrapper">
+
+      <ul class="todo-list">
+        <li>
+          <div class="div"><img src="./images/icon-check.svg" alt=""></div>
+          <span>My first todo</span>
+          <img src="./images/icon-cross.svg" alt="" class="delete">
+        </li>
+        <li>
+          <div class="div"><img src="./images/icon-check.svg" alt="" class="completed"></div>
+          <span>Buy milk</span>
+          <img src="./images/icon-cross.svg" alt="" class="delete">
+        </li>
+        <li>
+          <div class="div"><img src="./images/icon-check.svg" alt="" class="completed"></div>
+          <span>Call Jane</span>
+          <img src="./images/icon-cross.svg" alt="" class="delete">
+        </li>
+        <li>
+          <div class="div"><img src="./images/icon-check.svg" alt="" class="completed"></div>
+          <span>Attach a js file to this todo app</span>
+          <img src="./images/icon-cross.svg" alt="" class="delete">
+        </li>
+      </ul>
+
+      <!-- manage todos -->
+      <div class="call-to-action">
+        <p><span>4</span> item(s) left</p>
+        <ul>
+          <li><a href="#all">All</a></li>
+          <li><a href="#active">Active</a></li>
+          <li><a href="#completed">Completed</a></li>
+        </ul>
+        <a href="#clear-completed">Clear completed</a>
+      </div>
+
+    </div>
+
+
+    <div>
+      <a href="#">Drag and drop to reorder list</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+
+</html>
