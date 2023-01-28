@@ -223,7 +223,18 @@ main>div:last-child a {
         background-size: contain;
     }
     main{
-        max-width: 70%;
+        min-width: 40%;
+        max-width: 80%;
         margin: auto;
+    }
+
+    header{
+        margin: 30px auto;
+        max-width: 80%;
+        padding: 3px 5px;
+    }
+
+    header img {
+        right: 3px;
     }
 }

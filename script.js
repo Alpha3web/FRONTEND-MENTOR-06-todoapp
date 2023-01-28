@@ -138,9 +138,9 @@ modes.addEventListener('click', e => {
 const generateTemplate = tempTodo => {
     const html =
         `<li>
-    <div class="div"><img src="./images/icon-check.svg" alt="" class="completed"></div>
+    <div class="div"><img src="./images/icon-check.svg" alt="icon-check" class="completed"></div>
     <span>${tempTodo}</span>
-    <img src="./images/icon-cross.svg" alt="" class="delete">
+    <img src="./images/icon-cross.svg" alt="icon-cross" class="delete">
   </li>`;
 
     todos.innerHTML += html;
