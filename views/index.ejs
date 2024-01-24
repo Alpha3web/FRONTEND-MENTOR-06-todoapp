@@ -16,8 +16,10 @@
 
   <header>
     <h1>TODO</h1>
-    <img src="images/icon-moon.svg" alt="dark mode" class="dark-mode">
-    <img src="images/icon-sun.svg"  alt="light mode" class="light-mode">
+    <div class="mode-icons">
+      <img src="images/icon-moon.svg" alt="dark mode" class="dark-mode">
+      <img src="images/icon-sun.svg"  alt="light mode" class="light-mode hidden">
+    </div>
   </header>
 
   <main>
@@ -35,7 +37,7 @@
       <ul class="todo-list">
 
         <% for (let i = 0; i < list.length; i++) { %>
-          <li>
+          <li class="todo-item">
             <div class="div"><img src="images/icon-check.svg" alt="icon-check"></div>
             <span><%= list[i] %></span>
             <img src="images/icon-cross.svg" alt="icon-cross" class="delete">

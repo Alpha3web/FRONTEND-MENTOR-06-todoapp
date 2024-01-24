@@ -30,7 +30,14 @@
 
 body{
     background-repeat: no-repeat;
-   
+
+    background-color: var(--Lt-Very-Light-Gray);
+    background-image: url(../images/bg-desktop-light.jpg);
+}
+
+.dark-body{
+    background-color: var(--Very-Dark-Blue);
+    background-image: url(../images/bg-desktop-dark.jpg);
 }
 
 header {
@@ -43,12 +50,13 @@ header {
     color: white;
 }
 
-header img {
+.mode-icons {
     position: absolute;
     top: 8px;
     right: 8px;
 }
-.dark-mode{
+
+.hidden{
     display: none;
 }
 
@@ -60,7 +68,11 @@ form {
     padding: 2px 3px 2px 18px;
     border-radius: 5px;
 
+    background-color: var(--Lt-Very-Light-Gray);
+}
 
+.dark-form{
+    background-color: var(--Very-Dark-Desaturated-Blue);
 }
 
 input {
@@ -69,6 +81,12 @@ input {
     margin: 5px;
     border: transparent;
     padding-left: 8px;
+
+    background-color: var(--Lt-Very-Light-Gray);
+}
+
+.dark-input{
+    background: var(--Very-Dark-Desaturated-Blue);
 }
 
 .for-light-theme::placeholder{
@@ -116,13 +134,21 @@ form img {
     
 }
 
-.todo-list>li {
+.todo-item {
     display: flex;
     padding: 7px 18px;
     font-size: 14px;
     font-family: 'Josefin Sans';
     font-weight: 400;
     align-items: center;
+
+    color: var(--Lt-Very-Dark-Grayish-Blue);
+    border-bottom: 1px solid var(--Lt-Very-Light-Grayish-Blue);
+}
+
+.dark-todo-item{
+    color: var(--Light-Grayish-Blue);
+    border-bottom: 1px solid var(--Very-Dark-Grayish-Blue-1);
 }
 
 li .div {
@@ -155,6 +181,12 @@ li span:nth-child(2) {
     padding: 10px 15px 10px 20px;
     font-size: 11px;
     font-family: 'Josefin Sans';
+
+    color: var(--Lt-Dark-Grayish-Blue);
+}
+
+.dark-call-to-action{
+        color: var(--Very-Dark-Grayish-Blue);
 }
 
 
@@ -174,6 +206,9 @@ li span:nth-child(2) {
     margin: auto 5px;
     color: var(--Lt-Dark-Grayish-Blue);
 }
+
+/* ################## */
+/* check psudo state of all classes */
 .dark-anchor:hover {
     color: var(--Light-Grayish-Blue-hover);
     font-weight: 700;
@@ -189,6 +224,12 @@ li span:nth-child(2) {
     height: fit-content;
     margin: 30px auto;
     border-radius: 5px;
+
+    background-color: var(--Lt-Very-Light-Gray);
+}
+
+.dark-wrapper {
+    background: var(--Very-Dark-Desaturated-Blue);
 }
 
 main>div:last-child {
@@ -221,7 +262,16 @@ main>div:last-child a {
     body{
         background-attachment: fixed;
         background-size: contain;
+
+        background-image: url(../images/bg-mobile-light.jpg); 
     }
+
+    /* ############## */
+    /* This class has not been implimented */
+    .dark-body-sm{
+        background-image: url(images/bg-mobile-dark.jpg);
+    }
+    
     main{
         min-width: 40%;
         max-width: 80%;
