@@ -27,7 +27,7 @@ const darkTheme = () => {
     <style>
     body{
     background-color: var(--Very-Dark-Blue);
-    background-image: url(./images/bg-desktop-dark.jpg);
+    background-image: url(images/bg-desktop-dark.jpg);
     }
     form {
     background-color: var(--Very-Dark-Desaturated-Blue);
@@ -51,7 +51,7 @@ const darkTheme = () => {
     }
     @media only screen and (max-width: 600px){
     body {
-        background-image: url(./images/bg-mobile-dark.jpg);
+        background-image: url(images/bg-mobile-dark.jpg);
     }
     }
     </style>
@@ -79,7 +79,7 @@ const lightTheme = () => {
     <style>
     body{
     background-color: var(--Lt-Very-Light-Gray);
-    background-image: url(./images/bg-desktop-light.jpg);
+    background-image: url(images/bg-desktop-light.jpg);
     }
     form {
     background-color: var(--Lt-Very-Light-Gray);
@@ -104,7 +104,7 @@ const lightTheme = () => {
     }
     @media only screen and (max-width: 600px){
     body {
-        background-image: url(./images/bg-mobile-light.jpg);
+        background-image: url(images/bg-mobile-light.jpg);
     }
     }
     </style>
@@ -131,51 +131,6 @@ modes.addEventListener('click', e => {
         e.target.previousElementSibling.style.display = 'block';
     }
 })
-
-
-// create new todoT
-
-const generateTemplate = tempTodo => {
-    const html =
-        `<li>
-    <div class="div"><img src="./images/icon-check.svg" alt="icon-check" class="completed"></div>
-    <span>${tempTodo}</span>
-    <img src="./images/icon-cross.svg" alt="icon-cross" class="delete">
-  </li>`;
-
-    todos.innerHTML += html;
-}
-
-form.addEventListener('submit', e => {
-
-    e.preventDefault();
-
-    const newTodo = form.createTodo.value.trim();
-
-    if (newTodo.length) {
-        generateTemplate(newTodo);
-        form.reset();
-    }
-
-
-    todoItems();
-
-});
-
-//  updating todo items
-
-const todoItems = () => {
-
-    const todoArray = Array.from(todos.children);
-
-    const leftTodos = todoArray.filter(leftTodo => {
-        return !leftTodo.classList.contains('comp');
-    });
-
-    callToAction.querySelector('span').textContent = leftTodos.length;
-}
-
-
 
 todos.addEventListener('click', e => {
     e.preventDefault();
