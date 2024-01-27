@@ -38,8 +38,10 @@
 
         <% for (let i = 0; i < list.length; i++) { %>
           <li class="todo-item">
-            <div class="div"><img src="images/icon-check.svg" alt="icon-check"></div>
-            <span><%= list[i] %></span>
+            <!-- <div class="div"><img src="images/icon-check.svg" lt="icon-check"></div> -->
+            <input type="checkbox" name="checkbox" id= "<%= i %>" >
+            <label for="<%= i %>"><%= list[i].todo %></label>
+            <!-- <span><%= list[i] %></span> -->
             <img src="images/icon-cross.svg" alt="icon-cross" class="delete">
           </li> 
         <% } %>
@@ -49,11 +51,11 @@
       <div class="call-to-action">
         <p><span><%= numb %></span> item(s) left</p>
         <ul>
-          <li><a href="#all">All</a></li>
-          <li><a href="#active">Active</a></li>
-          <li><a href="#completed">Completed</a></li>
+          <li><a class="light-anchor" href="/">All</a></li>
+          <li><a class="light-anchor" href="/active">Active</a></li>
+          <li><a class="light-anchor" href="/completed">Completed</a></li>
         </ul>
-        <a href="#clear-completed">Clear completed</a>
+        <a class="light-anchor" href="/clearCompleted">Clear completed</a>
       </div>
 
     </div>

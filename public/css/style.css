@@ -75,7 +75,7 @@ form {
     background-color: var(--Very-Dark-Desaturated-Blue);
 }
 
-input {
+.light-text-input {
     width: 100%;
     height: 35px;
     margin: 5px;
@@ -85,22 +85,34 @@ input {
     background-color: var(--Lt-Very-Light-Gray);
 }
 
+/* input[type="checkbox"] {
+    background-color: red
+} */
+
+input:checked{
+    background-color: red;
+}
+
+input:checked + label {
+    text-decoration: line-through;
+}
+
 .dark-input{
     background: var(--Very-Dark-Desaturated-Blue);
 }
 
-.for-light-theme::placeholder{
+.light-text-input::placeholder{
     color: var(--Lt-Very-Dark-Grayish-Blue);
     font-family: 'Josefin Sans';
 }
-.for-light-theme:focus{
+.light-text-input:focus{
     color: var(--Lt-Very-Dark-Grayish-Blue);
     font-family: 'Josefin Sans';
 }
-.for-dark-theme::placeholder{
+.dark-input::placeholder{
     color: var(--Light-Grayish-Blue);
 }
-.for-dark-theme:focus{
+.dark-input:focus{
     color: var(--Light-Grayish-Blue);
 }
 
@@ -207,8 +219,6 @@ li span:nth-child(2) {
     color: var(--Lt-Dark-Grayish-Blue);
 }
 
-/* ################## */
-/* check psudo state of all classes */
 .dark-anchor:hover {
     color: var(--Light-Grayish-Blue-hover);
     font-weight: 700;
