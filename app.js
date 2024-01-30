@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const _ = require('lodash');
 
 const app = express();
 app.use(express.static('public'));
@@ -8,26 +9,40 @@ app.use(express.json())
 
 app.set('view engine', 'ejs');
 
-let todoList = [{
-    dateCreated: 'Tuesday',
-    todo: 'First todo item',
-    completed: false
-}];
+const groupByDate = (list => {
+    return _.groupBy(list, 'dateCreated')
+});
+
+const getDate = () => {
+    const today = new Date();
+
+    const options = {
+        day: 'numeric',
+        month: 'long', 
+        weekday: 'long'
+    }
+
+    return today.toLocaleDateString("en-US", options);
+};
+
+let todoList = [{dateCreated: 'Monday, January 29', todo: 'First todo item', completed: false}];
+
 
 // Home route, renders all todos
 app.get('/', (req, res) => {
-    const numberOfTodos = todoList.length;
 
-    res.render('index', { list: todoList, numb: numberOfTodos });
+    const numberOfTodos = todoList.length;
+    console.log(groupByDate(todoList))
+
+    res.render('index', { list: groupByDate(todoList), numb: numberOfTodos });
 });
 
 // Home post route, recieve data from ejs form and create new todo object.
 app.post('/', (req, res) => {
     const item = req.body.newTodo;
-    const date = new Date();
     
     const newTodoItem = {
-        dateCreated: date.toDateString(),
+        dateCreated: getDate(),
         todo: item,
         completed: false
     }
@@ -41,14 +56,15 @@ app.get('/completed', (req, res) => {
 
     const completedTodos = todoList.filter(item => item.completed === true);
 
-    res.render('index', { list: completedTodos, numb: completedTodos.length });
+    res.render('index', { list: groupByDate(completedTodos), numb: completedTodos.length });
 })
 
 // Active route, filter all active todos.
 app.get('/active', (req, res) => {
+    console.log(todoList)
     const activeTodos = todoList.filter(item => item.completed === false);
 
-    res.render('index', { list: activeTodos, numb: activeTodos.length });
+    res.render('index', { list: groupByDate(activeTodos), numb: activeTodos.length });
 });
 
 // Recieve todo status from frontend js.
@@ -57,22 +73,20 @@ app.post("/todoItem", (req, res) => {
     const todoNewState = req.body.state;
 
     todoList[todoIndex].completed = todoNewState;
-    res.send({ feedback: 'State updated' });
+    res.send({ feedback: 1 });
 });
 
 // Delete an item.
-app.post("/todoItem/:todoIndex", (req, res) => {
+app.get("/deleteTodo/:todoId", (req, res) => {
+    const todoIndex = Number(req.params.todoId);
+    todoList.splice(todoIndex, 1);
+
     res.redirect('/');
 });
 
 // delete all checked todos
 app.get('/clearCompleted', (req, res) => {
-    for (let i = 0; i < todoList.length; i++) {
-        const todoItem = todoList[i];
-        if (todoItem.completed) {
-            todoList.splice(i, 1);
-        }
-    }
+    _.remove(todoList, item => item.completed)
     
     res.redirect('/');
 });

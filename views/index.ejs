@@ -27,7 +27,7 @@
     <!-- create a todo form field -->
     <form action="/" method="post">
       <div class="div"><img src="images/icon-check.svg" alt="icon-check"></div>
-      <input type="text" name="newTodo" placeholder="Create a todo" autocomplete="off" autofocus>
+      <input class="light-text-input" type="text" name="newTodo" placeholder="Create a todo" autocomplete="off" autofocus>
     </form>
 
     <!-- Todos -->
@@ -36,15 +36,25 @@
 
       <ul class="todo-list">
 
-        <% for (let i = 0; i < list.length; i++) { %>
-          <li class="todo-item">
-            <!-- <div class="div"><img src="images/icon-check.svg" lt="icon-check"></div> -->
-            <input type="checkbox" name="checkbox" id= "<%= i %>" >
-            <label for="<%= i %>"><%= list[i].todo %></label>
-            <!-- <span><%= list[i] %></span> -->
-            <img src="images/icon-cross.svg" alt="icon-cross" class="delete">
-          </li> 
+        <% for (let [key, value] of Object.entries(list)) { %>
+          <h2> <%= key %> </h2>
+          <% for (let i = 0; i < value.length; i++) { %>
+            <li class="todo-item">
+              <!-- <div class="div"><img src="images/icon-check.svg" lt="icon-check"></div> -->
+              <% if ( value[i].completed ){ %>
+                <input type="checkbox" name="checkbox" id= "<%= i %>" checked>
+                <% } else { %>
+                <input type="checkbox" name="checkbox" id= "<%= i %>" >
+                <% } %>
+              
+              <label for="<%= i %>"><%= value[i].todo %></label>
+              <a href="/deleteTodo/<%= i %>">
+                <img src="images/icon-cross.svg" alt="icon-cross" class="delete">
+              </a>
+            </li> 
+          <% } %>
         <% } %>
+        
       </ul>
 
       <!-- manage todos -->

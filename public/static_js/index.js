@@ -9,13 +9,19 @@ const input = document.querySelector('.light-text-input');
 const todoItems = document.querySelectorAll('.todo-item');
 const wrapper = document.querySelector('.wrapper');
 const anchors = document.querySelectorAll('.light-anchor');
+const listDate = document.querySelectorAll('h2');
+
 
 const changeTheme = () => {
+    /**Changes the current theme of the user */
     pageBody.classList.toggle('dark-body')
     form.classList.toggle('dark-form')
     input.classList.toggle('dark-input')
     callToAction.classList.toggle('dark-call-to-action')
     wrapper.classList.toggle('dark-wrapper')
+    listDate.forEach(date => {
+        date.classList.toggle('date')
+    });
 
     todoItems.forEach(item => {
         item.classList.toggle('dark-todo-item')
@@ -26,22 +32,39 @@ const changeTheme = () => {
 }
 
 
+const changeThemeIcon = () => {
+    modeIcons.firstElementChild.classList.toggle('hidden');
+    modeIcons.lastElementChild.classList.toggle('hidden');
+};
+
+// Apply previously used theme
+const mode = localStorage.getItem("mode");
+
+if (mode === null) {
+    localStorage.setItem('mode', 'light mode');
+} else if (mode === 'dark mode'){
+    changeThemeIcon();
+    changeTheme();
+};
+
+
 // Toggle between dark and light mode.
 modeIcons.addEventListener('click', e => {
     const clickedModeIcon = e.target.alt;
-
-    modeIcons.firstElementChild.classList.toggle('hidden');
-    modeIcons.lastElementChild.classList.toggle('hidden');
+    changeThemeIcon();
 
     if (clickedModeIcon === "dark mode") {
-         changeTheme()
+         changeTheme();
+         localStorage.setItem('mode', 'dark mode');
     } else {
-        changeTheme()
+        changeTheme();
+        localStorage.setItem('mode', 'light mode');
     }
 });
 
 
 const  sendData = async e => {
+    /**Send the checkbox id and checked status to the server */
     if (e.target.name === 'checkbox'){
         
         const data = {item: e.target.id, state: e.target.checked}
@@ -53,48 +76,8 @@ const  sendData = async e => {
           },
           body: JSON.stringify(data),
         });
-        const result = await response.json();
-        console.log("Success! " + result.feedback);
     }
 }
 
 todos.addEventListener('click', sendData);
-
-// managing todos
-
-
-callToAction.addEventListener('click', e => {
-    // e.preventDefault();
-
-    switch (e.target.hash) {
-
-
-        // all todos
-
-        case '#all':
-
-            e.target.style.color = 'var(--Bright-Blue)';
-            break;
-
-        // completed todos
-
-        case '#completed':
-
-            e.target.style.color = 'var(--Bright-Blue)';
-            break;
-
-        // active todos
-
-        case '#active':
-
-            e.target.style.color = 'var(--Bright-Blue)';
-            break;
-
-        // clear all completed todos
-
-
-        case '#clear-completed':
-    }
-})
-
 
